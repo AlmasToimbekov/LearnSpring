@@ -1,4 +1,4 @@
-package myProject;
+package my_project.first_bean;
 
 public class TestBean {
     private String name;
