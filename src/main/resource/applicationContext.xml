@@ -13,13 +13,27 @@
     </bean>
 
     <context:property-placeholder location="classpath:musicPlayer.properties"/>
-    <bean id="musicBean"
+    <bean id="classicalMusic"
           class="my_project.interfaces.ClassicalMusic">
+    </bean>
+    <bean id="rockMusic"
+          class="my_project.interfaces.RockMusic">
+    </bean>
+    <bean id="popMusic"
+          class="my_project.interfaces.PopMusic">
+        <constructor-arg value="Pop"/>
     </bean>
 
     <bean id="musicPlayerBean"
-          class="my_project.interfaces.MusicPlayer">
-        <constructor-arg ref="musicBean"/>
+          class="my_project.interfaces.MusicPlayer"
+          scope="prototype">
+        <property name="musicList">
+            <list>
+                <ref bean="classicalMusic"/>
+                <ref bean="rockMusic"/>
+                <ref bean="popMusic"/>
+            </list>
+        </property>
         <property name="name" value="${musicPlayer.name}"/>
         <property name="volume" value="${musicPlayer.volume}"/>
     </bean>
