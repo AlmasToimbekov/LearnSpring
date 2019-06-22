@@ -28,14 +28,19 @@ public class TestSpring {
                 "applicationContext.xml"
         );
 
-//        Music musicBean = context.getBean("musicBean", Music.class);
-//        System.out.println(musicBean.getSong());
+        MusicPlayer musicPlayer1 = context.getBean("musicPlayerBean", MusicPlayer.class);
+        MusicPlayer musicPlayer2 = context.getBean("musicPlayerBean", MusicPlayer.class);
 
-        MusicPlayer musicPlayer = context.getBean("musicPlayerBean", MusicPlayer.class);
+        musicPlayer1.playMusicList();
+        musicPlayer2.playMusicList();
 
-        musicPlayer.playMusicList();
-        System.out.println(musicPlayer.getName());
-        System.out.println(musicPlayer.getVolume());
+        musicPlayer2.setVolume("30");
+
+        System.out.println(musicPlayer1.getName());
+        System.out.println(musicPlayer1.getVolume());
+
+        System.out.println(musicPlayer2.getName());
+        System.out.println(musicPlayer2.getVolume());
 
         context.close();
     }
