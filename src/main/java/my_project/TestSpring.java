@@ -13,6 +13,11 @@ public class TestSpring {
         test.musicTest();
     }
 
+//    private void cleanJavaTest() {
+//        ClassicalMusic classicalMusic = new ClassicalMusic();
+//        System.out.println(classicalMusic.getSong());
+//    }
+
     private void firstTest() {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
                 "applicationContext.xml"
@@ -28,20 +33,11 @@ public class TestSpring {
                 "applicationContext.xml"
         );
 
-        MusicPlayer musicPlayer1 = context.getBean("musicPlayerBean", MusicPlayer.class);
-        MusicPlayer musicPlayer2 = context.getBean("musicPlayerBean", MusicPlayer.class);
+        ClassicalMusic classicalMusic1 = context.getBean("classicalMusic", ClassicalMusic.class);
+        ClassicalMusic classicalMusic2 = context.getBean("classicalMusic", ClassicalMusic.class);
 
-        musicPlayer1.playMusicList();
-        musicPlayer2.playMusicList();
-
-        musicPlayer2.setVolume("30");
-
-        System.out.println(musicPlayer1.getName());
-        System.out.println(musicPlayer1.getVolume());
-
-        System.out.println(musicPlayer2.getName());
-        System.out.println(musicPlayer2.getVolume());
-
+        System.out.println(classicalMusic1);
+        System.out.println(classicalMusic2);
         context.close();
     }
 }
