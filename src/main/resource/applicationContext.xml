@@ -14,7 +14,11 @@
 
     <context:property-placeholder location="classpath:musicPlayer.properties"/>
     <bean id="classicalMusic"
-          class="my_project.interfaces.ClassicalMusic">
+          class="my_project.interfaces.ClassicalMusic"
+          scope="prototype"
+          init-method="initClassical"
+          destroy-method="destroyClassical"
+          factory-method="getClassicalMusic">
     </bean>
     <bean id="rockMusic"
           class="my_project.interfaces.RockMusic">
